@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 fade-in">
+    <h2 class="text-center text-danger mb-4 fw-bold">⚠️ Safety Tips for Diwali</h2>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-success">
+                <h4>✅ DO's</h4>
+                <ul>
+                    <li>Always buy green crackers (environment friendly).</li>
+                    <li>Light crackers in an open area.</li>
+                    <li>Keep a bucket of water or sand nearby.</li>
+                    <li>Maintain a safe distance while lighting crackers.</li>
+                    <li>Wear cotton clothes while bursting crackers.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-danger">
+                <h4>❌ DON'Ts</h4>
+                <ul>
+                    <li>Do not light crackers in hand.</li>
+                    <li>Do not wear synthetic or loose clothes.</li>
+                    <li>Never try to re-ignite a failed cracker.</li>
+                    <li>Do not use glass bottles or containers to launch rockets.</li>
+                    <li>Avoid bursting crackers near hospitals or schools.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <img src="{{ url_for('static', filename='images/banner.jpg') }}" class="img-fluid rounded shadow" style="max-height: 300px;">
+    </div>
+</div>
+{% endblock %}

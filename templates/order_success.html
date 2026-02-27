@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 text-center fade-in">
+    <div class="card shadow-lg p-5 border-success">
+        <div class="card-body">
+            <div style="font-size: 80px; color: green;">✅</div>
+            <h1 class="text-success mt-3">Order Placed Successfully!</h1>
+            <p class="lead">Thank you for shopping with Crackers Supermarket.</p>
+            <h4 class="mt-4">Order ID: <span class="fw-bold">#{{ order_id }}</span></h4>
+            
+            <p class="text-muted mt-3">Your order will be delivered soon.</p>
+
+            <div class="mt-4">
+                <a href="{{ url_for('download_invoice', order_id=order_id) }}" class="btn btn-danger btn-lg">
+                    📄 Download Invoice (PDF)
+                </a>
+                <br><br>
+                <a href="{{ url_for('home') }}" class="btn btn-outline-primary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

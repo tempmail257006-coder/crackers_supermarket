@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Hero Video Section -->
+<div class="position-relative text-center bg-dark text-white">
+    <video autoplay muted loop id="bg-video" class="w-100" style="height: 100vh; object-fit: cover; opacity: 0.5;">
+        <source src="{{ url_for('static', filename='video/login.mp4') }}" type="video/mp4">
+    </video>
+    <div class="position-absolute top-50 start-50 translate-middle fade-in">
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>LIGHTING UP YOUR WORLD</h1>
+                <p class="lead">Premium quality crackers at wholesale prices</p>
+                <a href="/products" class="btn btn-warning btn-lg mt-3">Shop Now</a>
+            </div>
+        </section>
+
+        
+
+        <div class="container mt-5 text-center">
+            <h2 class="mb-4">Why Choose Us?</h2>
+            <div class="row">
+        <div class="col-md-4">
+            <div class="p-3 border rounded shadow-sm">
+                <h3>🚀 Top Quality</h3>
+                <p>We sell only branded and safe crackers.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 border rounded shadow-sm">
+                <h3>💰 Best Prices</h3>
+                <p>Wholesale prices for every customer.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 border rounded shadow-sm">
+                <h3>🚚 Fast Delivery</h3>
+                <p>Home delivery available for bulk orders.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+       
+    </div>
+</div>
+
+
+{% endblock %}

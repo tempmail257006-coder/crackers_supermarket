@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-warning shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">⚡ Quick Bulk Enquiry</h4>
+                </div>
+                <div class="card-body">
+                    <p>Looking for bulk crackers for a wedding or event? Tell us your budget!</p>
+                    <form action="/contact_us" method="POST">
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Mobile</label>
+                            <input type="text" name="mobile" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Estimated Budget (Rs.)</label>
+                            <input type="number" name="budget" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label>Requirements</label>
+                            <textarea name="message" class="form-control" rows="3" placeholder="E.g. 50 boxes of sparklers..."></textarea>
+                        </div>
+                        <button class="btn btn-dark w-100">Request Quote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
