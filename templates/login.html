@@ -16,7 +16,8 @@
                     <h4>User Login</h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <div id="auth-error" class="alert alert-danger d-none" role="alert"></div>
+                    <form id="login-form" method="POST">
                         <div class="mb-3">
                             <label>Email</label>
                             <input type="email" name="email" class="form-control" required>
@@ -37,4 +38,8 @@
         
     </div>
 </div>
+{% endblock %}
+
+{% block page_scripts %}
+<script type="module" src="{{ url_for('static', filename='js/auth-pages.js') }}"></script>
 {% endblock %}

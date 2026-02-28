@@ -4,7 +4,6 @@ import os
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "crackers_supermarket_secret_key"
@@ -25,60 +24,27 @@ def intro():
 
 @app.route("/home")
 def home():
-    if 'user' not in session:
-        return redirect(url_for('intro'))
-    return render_template("home.html", user=session.get('user'))
+    return render_template("home.html")
 
 # --- Authentication Routes ---
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == "POST":
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        hashed_pw = generate_password_hash(password)
-
-        try:
-            con = get_db()
-            cur = con.cursor()
-            cur.execute("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", (name, email, hashed_pw))
-            con.commit()
-            flash("Registration Successful! Please Login.")
-            return redirect(url_for('login'))
-        except:
-            flash("Email already exists!")
-    
     return render_template("register.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        email = request.form['email']
-        password = request.form['password']
-        
-        con = get_db()
-        cur = con.cursor()
-        user = cur.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
-        
-        if user and check_password_hash(user['password'], password):
-            session['user'] = user['name']
-            return redirect(url_for('home'))
-        else:
-            flash("Invalid Email or Password")
-
     return render_template("login.html")
 
 @app.route("/social_login/<provider>")
 def social_login(provider):
-    # Simulation of Social Login for College Project
-    session['user'] = f"User ({provider})"
-    return redirect(url_for('home'))
+    flash("Email/password authentication only. Please sign in.")
+    return redirect(url_for('login'))
 
 @app.route("/logout")
 def logout():
     session.pop('user', None)
-    return redirect(url_for('intro'))
+    return redirect(url_for('login'))
 
 # --- Shop Routes ---
 

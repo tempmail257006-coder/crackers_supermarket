@@ -1,4 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 // Firebase configuration for Crackers Supermarket.
 const firebaseConfig = {
@@ -12,4 +13,8 @@ const firebaseConfig = {
 
 // Initialize Firebase and expose it for other page scripts.
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 window.firebaseApp = app;
+window.firebaseAuth = auth;
+
+export { app, auth };
