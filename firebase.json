@@ -4,14 +4,10 @@
       "dataDir": "dataconnect/.dataconnect/pgliteData"
     }
   },
-
   "hosting": {
+    "site": "crackers-supermarket106",
+
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
     "rewrites": [
       {
         "source": "**",
@@ -19,6 +15,7 @@
       }
     ]
   },
+  
  
   "auth": {
     "providers": {
