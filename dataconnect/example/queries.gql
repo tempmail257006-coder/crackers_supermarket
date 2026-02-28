@@ -1,0 +1,28 @@
+query ListAllProducts @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  products {
+    id
+    name
+    price
+    description
+  }
+}
+
+query GetMyCart @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  carts(where: { userUid: { eq_expr: "auth.uid" } }) {
+    id
+    items {
+      product {
+        name
+      }
+      quantity
+    }
+  }
+}
+
+mutation AddItemToCart($cartId: UUID!, $productId: UUID!, $quantity: Int!) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  cartItem_insert(data: { cartId: $cartId, productId: $productId, quantity: $quantity })
+}
+
+mutation UpdateUserProfile($userId: String!, $newBio: String) @auth(expr: "auth.uid == $userId") {
+  user_update(key: { id: $userId }, data: { bio: $newBio })
+}

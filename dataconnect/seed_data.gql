@@ -1,0 +1,82 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is for seeding data and should only be run by authenticated users.") {
+  user_insertMany(data: [
+    {
+      id: "user_001",
+      username: "AliceSmith",
+      email: "alice.smith@example.com",
+      createdAt: "2023-01-15T10:00:00Z"
+    },
+    {
+      id: "user_002",
+      username: "BobJohnson",
+      email: "bob.johnson@example.com",
+      createdAt: "2023-01-15T10:05:00Z"
+    },
+    {
+      id: "user_003",
+      username: "CharlieBrown",
+      email: "charlie.brown@example.com",
+      createdAt: "2023-01-15T10:10:00Z"
+    }
+  ])
+  product_insertMany(data: [
+    {
+      id: "prod_001",
+      name: "Organic Bananas",
+      description: "Fresh, organic bananas from local farms.",
+      price: 0.79,
+      category: "Fruits",
+      inStock: 150
+    },
+    {
+      id: "prod_002",
+      name: "Whole Wheat Bread",
+      description: "Hearty whole wheat bread, baked fresh daily.",
+      price: 3.49,
+      category: "Baked Goods",
+      inStock: 75
+    },
+    {
+      id: "prod_003",
+      name: "Almond Milk",
+      description: "Unsweetened almond milk, perfect for coffee and cereal.",
+      price: 4.29,
+      category: "Dairy & Alternatives",
+      inStock: 100
+    },
+    {
+      id: "prod_004",
+      name: "Ground Beef",
+      description: "Lean ground beef, great for a variety of dishes.",
+      price: 6.99,
+      category: "Meat",
+      inStock: 50
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "review_001",
+      userId: "user_001",
+      productId: "prod_001",
+      rating: 5,
+      comment: "Delicious and fresh bananas!",
+      createdAt: "2023-01-20T12:30:00Z"
+    },
+    {
+      id: "review_002",
+      userId: "user_002",
+      productId: "prod_002",
+      rating: 4,
+      comment: "Good bread, but a bit pricey.",
+      createdAt: "2023-01-21T09:00:00Z"
+    },
+    {
+      id: "review_003",
+      userId: "user_001",
+      productId: "prod_003",
+      rating: 5,
+      comment: "My favorite almond milk, always in stock!",
+      createdAt: "2023-01-22T14:45:00Z"
+    }
+  ])
+}
